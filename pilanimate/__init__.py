@@ -1,4 +1,4 @@
-#pilaniamte version 0.4.1
+#pilanimate version 0.4.1
 from PIL import Image, ImageDraw, ImageOps, ImageFilter, ImageEnhance, ImageColor, ImageFont, ImageSequence
 import cv2
 import numpy
@@ -14,7 +14,7 @@ class Animation:
     for i in range(layer_num):
       self.layers.append(Layer(size, fps, mode=mode, color=color))
   def export(self, filename="hey"):
-    video = cv2.VideoWriter(filename+".avi", cv2.VideoWriter_fourcc(*'XVID'), 30, self.size)
+    video = cv2.VideoWriter(filename+".avi", cv2.VideoWriter_fourcc(*'XVID'), self.fps, self.size)
     for frame_num in range(len(self.layers[0].frames)):
       frame = Image.new(self.mode, self.size)
       for i in range(len(self.layers)):
